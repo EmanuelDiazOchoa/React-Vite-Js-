@@ -1,12 +1,14 @@
 import React from 'react';
+import Navbar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold">¡Hola, mundo!</h1>
+    <div>
+      <Navbar />
+      <ItemListContainer greeting="¡Bienvenido a nuestra tienda!" />
     </div>
   );
 }
 
 export default App;
-
