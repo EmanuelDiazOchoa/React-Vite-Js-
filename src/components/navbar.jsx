@@ -7,9 +7,9 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <a className="text-white text-xl font-bold" href="#">Salem</a>
         <div className="flex space-x-4">
-          <a className="text-white hover:underline" href="#">Categoría 1</a>
-          <a className="text-white hover:underline" href="#">Categoría 2</a>
-          <a className="text-white hover:underline" href="#">Categoría 3</a>
+          <a className="text-white hover:underline" href="#">Sahumerio </a>
+          <a className="text-white hover:underline" href="#">Velas Aromatica </a>
+          <a className="text-white hover:underline" href="#">Perfumes Aromaticas </a>
         </div>
         <CartWidget />
       </div>
