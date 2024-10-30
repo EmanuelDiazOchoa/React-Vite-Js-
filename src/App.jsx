@@ -1,12 +1,21 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainer';
+import Carrusel from './components/carrusel';
 
 function App() {
   return (
-    <div style={{width:'100wh' ,height:'100vh'}}>
+    <div className="w-screen h-screen bg-gray-100">
+      {}
       <Navbar />
-      <ItemListContainer greeting="¡Bienvenido a nuestra tienda!" />
+
+      {}
+      <ItemListContainer greeting="¡Salem: El Jardín de Aromas!" />
+
+      {}
+      <Carrusel />
+
+      {}
     </div>
   );
 }
