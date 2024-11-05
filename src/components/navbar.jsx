@@ -3,7 +3,7 @@ import CartWidget from './CartWidget';
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-blue-500 p-4 fixed top-0 left-0 right-0 z-10"> {/* Añadir fixed y z-10 */}
       <div className="container mx-auto flex justify-between items-center">
         <a className="text-white text-xl font-bold" href="#">Salem</a>
         <div className="flex space-x-4">
@@ -18,5 +18,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 

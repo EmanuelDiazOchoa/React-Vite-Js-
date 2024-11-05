@@ -1,23 +1,15 @@
+// import {BrowserRouter, Routes, route} from 'react-router-dom';
 import React from 'react';
-import Navbar from './components/Navbar';
-import ItemListContainer from './components/ItemListContainer';
 import Carrusel from './components/carrusel';
 
 function App() {
-  return (
-    <div className="w-screen h-screen bg-gray-100">
-      {}
-      <Navbar />
-
-      {}
-      <ItemListContainer greeting="¡Salem: El Jardín de Aromas!" />
-
-      {}
-      <Carrusel />
-
-      {}
-    </div>
-  );
+    return (
+        <div className="App">
+            <h1 className="text-center text-2xl font-bold my-4">Mi Carrusel de Imágenes</h1>
+            <Carrusel />
+        </div>
+    );
 }
 
 export default App;
+
