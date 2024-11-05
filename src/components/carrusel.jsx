@@ -1,10 +1,11 @@
-// Carrusel.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-// Importa las imágenes correctamente
 import img1 from '../assets/imagen 1.webp';
 import img2 from '../assets/imagen 2.webp';
 import img3 from '../assets/imagen 3.webp';
@@ -23,15 +24,16 @@ import img15 from '../assets/imagen 15.webp';
 
 
 const Carrusel = () => {
-  return (
-    <div className="my-20"> {/* Cambia my-10 a my-20 o más */}
+return (
+    <div className="my-20"> {}
         <Swiper
             spaceBetween={30}
             slidesPerView={1}
             pagination={{ clickable: true }}
             navigation
             loop={true}
-            autoplay={{ delay: 3000 }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}  
+            modules={[Autoplay, Pagination, Navigation]}
         >
             <SwiperSlide>
                 <img src={img1} alt="Descripción de la imagen 1" className="w-full h-auto" />
