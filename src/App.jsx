@@ -5,26 +5,28 @@ import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Carrusel from './components/Carrusel';
+import ProductGallery from './components/ProductGallery1'; 
+import './styles/tailwind.css';
 
 function App() {
     return (
         <BrowserRouter>
-            <div className="App">
+            <div>
                 <Navbar />
-                <CartWidget />
-                <Routes>
-                    <Route path="/" element={<ItemListContainer greeting="Bienvenido al Catálogo" />} />
-                    <Route path="/category/:id" element={<ItemListContainer />} />
-                    <Route path="/item/:id" element={<ItemDetailContainer />} />
-                </Routes>
                 <Carrusel />
+                <h1>Te invitamos a recorre nuestra tienda</h1>
+                <Routes>
+                    <Route path="/" element={<ItemListContainer />} />
+                    <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    <Route path="/cart" element={<CartWidget />} />
+                    
+                </Routes>
+                <ProductGallery />
             </div>
         </BrowserRouter>
     );
 }
 
 export default App;
-
-
 
 
