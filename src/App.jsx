@@ -5,7 +5,8 @@ import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Carrusel from './components/Carrusel';
-import ProductGallery from './components/ProductGallery1'; 
+import ProductGallery from './components/ProductGallery1';
+import Categorias from './components/categorias';  
 import './styles/tailwind.css';
 
 function App() {
@@ -14,12 +15,13 @@ function App() {
             <div>
                 <Navbar />
                 <Carrusel />
-                <h1>Te invitamos a recorre nuestra tienda</h1>
+                <h1>Te invitamos a recorrer nuestra tienda</h1>
                 <Routes>
                     <Route path="/" element={<ItemListContainer />} />
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
                     <Route path="/cart" element={<CartWidget />} />
-                    
+                    <Route path="/categorias" element={<Categorias />} />  {/* Nueva ruta para Categorías */}
+                    <Route path="/productos/:id" element={<ItemListContainer />} />  {/* Ruta para productos por categoría */}
                 </Routes>
                 <ProductGallery />
             </div>

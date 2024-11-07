@@ -24,7 +24,7 @@ useEffect(() => {
     };
 
     fetchProductDetail();
-  }, [id]); 
+    }, [id]); 
 
 if (loading) {
     return <div>Cargando...</div>; 
