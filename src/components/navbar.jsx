@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget'; 
+
+
 
 const Navbar = () => {
     return (
@@ -8,8 +10,9 @@ const Navbar = () => {
             <div className="container mx-auto flex justify-between items-center">
                 
                 <Link className="text-white text-xl font-bold" to="/">Salem</Link>
+
+                
                 <div className="flex space-x-4">
-                    
                     <Link className="text-white hover:underline" to="/productos/sahumerio">Sahumerio</Link>  
                     <Link className="text-white hover:underline" to="/productos/velas">Velas Aromáticas</Link>    
                     <Link className="text-white hover:underline" to="/productos/perfumes">Perfumes Aromáticos</Link> 
@@ -22,6 +25,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 
 
 

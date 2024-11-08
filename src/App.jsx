@@ -3,11 +3,11 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import Carrusel from './components/Carrusel';
-import ProductGallery from './components/ProductGallery1';
-import Categorias from './components/categorias';  
-import './styles/tailwind.css';
+import ItemDetailContainer from './components/ItemDetailContainer'; 
+import Carrusel from './components/carrusel';
+import ProductGallery1 from "./components/ProductGallery1";
+import Categorias from "./components/categorias";
+import "./styles/tailwind.css"
 
 function App() {
     return (
@@ -20,15 +20,17 @@ function App() {
                     <Route path="/" element={<ItemListContainer />} />
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
                     <Route path="/cart" element={<CartWidget />} />
-                    <Route path="/categorias" element={<Categorias />} />  
-                    <Route path="/productos/:id" element={<ItemListContainer />} />  
+                    <Route path="/categorias" element={<Categorias />} />
+                    <Route path="/productos/:id" element={<ItemListContainer />} />
+                    <Route path="/productos" element={<ProductGallery1 />} /> 
                 </Routes>
-                <ProductGallery />
             </div>
         </BrowserRouter>
     );
 }
 
 export default App;
+
+
 
 
