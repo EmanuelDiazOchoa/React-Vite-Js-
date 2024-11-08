@@ -20,8 +20,8 @@ function App() {
                     <Route path="/" element={<ItemListContainer />} />
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
                     <Route path="/cart" element={<CartWidget />} />
-                    <Route path="/categorias" element={<Categorias />} />  {/* Nueva ruta para Categorías */}
-                    <Route path="/productos/:id" element={<ItemListContainer />} />  {/* Ruta para productos por categoría */}
+                    <Route path="/categorias" element={<Categorias />} />  
+                    <Route path="/productos/:id" element={<ItemListContainer />} />  
                 </Routes>
                 <ProductGallery />
             </div>
