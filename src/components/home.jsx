@@ -1,6 +1,6 @@
 import React from 'react';
-import Carrusel from './Carrusel'; 
-import Categorias from './Categorias'; 
+import Carrusel from './carrusel'; 
+import Categorias from './categorias'; 
 import ItemListContainer from './ItemListContainer';
 import ProductGallery1 from './ProductGallery1';
 

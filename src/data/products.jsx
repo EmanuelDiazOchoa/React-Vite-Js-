@@ -7,6 +7,7 @@ const products = [
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
         color: 'Black',
+        category: 1
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ const products = [
         imageAlt: "Front of men's Classic T-Shirt in white.",
         price: '$25',
         color: 'White',
+        category: 1
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ const products = [
         imageAlt: "Front of men's Casual Hoodie in gray.",
         price: '$45',
         color: 'Gray',
+        category: 2
     },
     {
         id: 4,
@@ -34,6 +37,7 @@ const products = [
         imageAlt: "Front of men's Running Shoes in blue.",
         price: '$75',
         color: 'Blue',
+        category: 3
     },
     
     ];

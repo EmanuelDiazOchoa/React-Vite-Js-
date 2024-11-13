@@ -16,8 +16,15 @@ const ItemListContainer = () => {
 
       try {
         const products = await fetchProductsAsync(); 
-        const filteredProducts = products.filter(product => product.category === id); 
+        
+        const filteredProducts = products.filter(product => product.category == id); 
+      if (filteredProducts.length>0){
         setProductList(filteredProducts); 
+      }
+      else{
+        setProductList(products)
+      }
+        console.log(productList)
       } catch (err) {
         setError('Error al cargar productos');
       } finally {
@@ -34,13 +41,13 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <h2>Lista de Productos</h2>
+      <h2 className="text-2xl font-bold tracking-tight text-gray-900">Lista de Productos</h2>
       {loading ? (
         <p>Cargando productos...</p>
-      ) : productList.length === 0 ? (
-        <p>No hay productos en esta categoría.</p>
-      ) : (
+      ) : productList.length > 0 ? (
         <ProductGallery products={productList} /> 
+      ) : (
+        <p>No hay productos en esta categoría.</p>
       )}
     </div>
   );

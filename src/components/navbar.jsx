@@ -13,9 +13,9 @@ const Navbar = () => {
 
                 
                 <div className="flex space-x-4">
-                    <Link className="text-white hover:underline" to="/productos/sahumerio">Sahumerio</Link>  
-                    <Link className="text-white hover:underline" to="/productos/velas">Velas Aromáticas</Link>    
-                    <Link className="text-white hover:underline" to="/productos/perfumes">Perfumes Aromáticos</Link> 
+                    <Link className="text-white hover:underline" to="/productos/1">Sahumerio</Link>  
+                    <Link className="text-white hover:underline" to="/productos/2">Velas Aromáticas</Link>    
+                    <Link className="text-white hover:underline" to="/productos/3">Perfumes Aromáticos</Link> 
                 </div>
                 
                 <CartWidget />
