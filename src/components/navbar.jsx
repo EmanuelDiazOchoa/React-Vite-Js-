@@ -6,13 +6,13 @@ import CartWidget from './CartWidget';
 
 const Navbar = () => {
     return (
-        <nav className="bg-blue-500 p-4 fixed top-0 left-0 right-0 z-10">
+        <nav className="bg-violet-500 p-6 fixed top-0 left-0 right-0 z-10">
             <div className="container mx-auto flex justify-between items-center">
                 
-                <Link className="text-white text-xl font-bold" to="/">Salem</Link>
+                <Link className="text-white text-3xl font-bold" to="/">Salem</Link>
 
                 
-                <div className="flex space-x-4">
+                <div className="flex space-x-10">
                     <Link className="text-white hover:underline" to="/productos/1">Sahumerio</Link>  
                     <Link className="text-white hover:underline" to="/productos/2">Velas Aromáticas</Link>    
                     <Link className="text-white hover:underline" to="/productos/3">Perfumes Aromáticos</Link> 
