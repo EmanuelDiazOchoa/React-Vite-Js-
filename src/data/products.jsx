@@ -3,7 +3,7 @@ const products = [
         id: 1,
         name: 'Basic Tee',
         href: '#',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageSrc: 'src/assets/perfumes 1.jpeg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
         color: 'Black',
@@ -13,7 +13,7 @@ const products = [
         id: 2,
         name: 'Classic T-Shirt',
         href: '#',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-02.jpg',
+        imageSrc: './src/assets/Sahumerios 1.webp',
         imageAlt: "Front of men's Classic T-Shirt in white.",
         price: '$25',
         color: 'White',
@@ -23,7 +23,7 @@ const products = [
         id: 3,
         name: 'Casual Hoodie',
         href: '#',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-03.jpg',
+        imageSrc: './src/assets/velas 1.webp',
         imageAlt: "Front of men's Casual Hoodie in gray.",
         price: '$45',
         color: 'Gray',
@@ -39,6 +39,7 @@ const products = [
         color: 'Blue',
         category: 3
     },
+    
     
     ];
 
