@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductsAsync } from "../asyncMock"; 
 import ProductGallery from "./ProductGallery1"; 
-<<<<<<< HEAD
-=======
 import { motion } from "framer-motion";
->>>>>>> 911d7cf (Inicio limpio sin credenciales)
 
 const ItemListContainer = () => {
   const { id } = useParams(); 
@@ -22,13 +19,11 @@ const ItemListContainer = () => {
         const products = await fetchProductsAsync(); 
         
         const filteredProducts = products.filter(product => product.category == id); 
-      if (filteredProducts.length>0){
-        setProductList(filteredProducts); 
-      }
-      else{
-        setProductList(products)
-      }
-        console.log(productList)
+        if (filteredProducts.length > 0) {
+          setProductList(filteredProducts); 
+        } else {
+          setProductList(products)
+        }
       } catch (err) {
         setError('Error al cargar productos');
       } finally {
@@ -39,20 +34,13 @@ const ItemListContainer = () => {
     fetchProducts();
   }, [id]); 
 
-<<<<<<< HEAD
-=======
   const words = "Lo que Buscabas para el Hogar... Esta aca!!!".split(" ");
 
->>>>>>> 911d7cf (Inicio limpio sin credenciales)
   if (error) {
     return <p>{error}</p>; 
   }
 
   return (
-<<<<<<< HEAD
-    <div>
-      <h2 className="text-2xl font-bold tracking-tight text-gray-900">Lista de Productos</h2>
-=======
     <div className="bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
       <motion.h1 
         className="text-2xl font-heading font-bold tracking-tight text-gray-900 text-center mt-8 mb-12"
@@ -73,7 +61,6 @@ const ItemListContainer = () => {
           </motion.span>
         ))}
       </motion.h1>
->>>>>>> 911d7cf (Inicio limpio sin credenciales)
       {loading ? (
         <p>Cargando productos...</p>
       ) : productList.length > 0 ? (
@@ -83,11 +70,7 @@ const ItemListContainer = () => {
       )}
     </div>
   );
-<<<<<<< HEAD
 };
-=======
-  };
->>>>>>> 911d7cf (Inicio limpio sin credenciales)
 
 export default ItemListContainer;
 

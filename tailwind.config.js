@@ -1,19 +1,5 @@
 module.exports = {
   content: [
-<<<<<<< HEAD
-    
-    './src/**/*.{html,js,jsx,ts,tsx}',
-  ],
-  plugins: [
-    
-    require('@tailwindcss/aspect-ratio'),
-  ],
-  theme: {
-    extend: {
-  
-    },
-  },
-=======
     './src/**/*.{html,js,jsx,ts,tsx}',
   ],
   theme: {
@@ -27,7 +13,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
   ],
->>>>>>> 911d7cf (Inicio limpio sin credenciales)
 }
 
 
