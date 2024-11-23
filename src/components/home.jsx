@@ -26,7 +26,11 @@ return (
     
     <div className="product-gallery my-16">
         <h2 className="text-center text-2xl font-bold">Productos Recomendados</h2>
+<<<<<<< HEAD
         <ProductGallery1 />
+=======
+        <ProductGallery1 products={products} />
+>>>>>>> 911d7cf (Inicio limpio sin credenciales)
     </div>
 
     </div>

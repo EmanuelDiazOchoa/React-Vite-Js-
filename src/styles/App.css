@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
+<<<<<<< HEAD
 @tailwind utilities;
+=======
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+h1, h2, h3, h4, h5, h6 {
+font-family: "Source Sans Pro", sans-serif;
+}
+
+
+.nav-font {
+    font-family: 'Josefin Sans', sans-serif;
+}
+>>>>>>> 911d7cf (Inicio limpio sin credenciales)
