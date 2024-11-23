@@ -6,10 +6,10 @@ import { useNumber } from '../hook/useNumber';
 import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
-  const { cartItems } = useCart();
+  const { cart, getCartQuantity } = useCart();
   const { formatNumber } = useNumber();
 
-  const totalItems = cartItems ? cartItems.reduce((total, item) => total + (item.quantity || 0), 0) : 0;
+  const totalItems = getCartQuantity();
 
   return (
     <Link to="/cart">

@@ -3,6 +3,7 @@ import Carrusel from './carrusel';
 import Categorias from './categorias'; 
 import ItemListContainer from './ItemListContainer';
 import ProductGallery1 from './ProductGallery1';
+import products from '../data/products';
 
 const Home = () => {
 return (
