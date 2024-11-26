@@ -10,7 +10,7 @@ const imagenes = Array.from({ length: 15 }, (_, i) => `/img carrusel/imagen ${i 
 
 const Carrusel = () => {
     return (
-        <div className="my-15 bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
+        <div className="my-14 bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
             <Swiper
                 spaceBetween={30}
                 slidesPerView={1}

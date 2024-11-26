@@ -1,76 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { fetchProductsAsync } from "../asyncMock"; 
-import ProductGallery from "./ProductGallery1"; 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { db } from "../service/firebase"
+import {collection, getDocs, query, where} from 'firebase/firestore'
+import ProductGallery1 from "./ProductGallery1"
 
-const ItemListContainer = () => {
-  const { id } = useParams(); 
-  const [productList, setProductList] = useState([]); 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); 
+function ItemListContainer({greetings}) {
+    const [products, setProducts] = useState([])
+    const [loader, setLoader] = useState(false)
+    const {categoryId} = useParams()
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      setError(null); 
+    useEffect(()=>{
+      console.log("Categoría actual:", categoryId)
+      setLoader(true)
+      const collectionRef = categoryId
+        ? query(collection(db, "products"), where("category", "==", categoryId))
+        : collection(db, "products")
+      
+        getDocs(collectionRef)
+          .then((querySnapshot)=>{
+            const productos = querySnapshot.docs.map((doc)=>{
+              return {id: doc.id, ...doc.data()}
+            })
+            console.log("Productos encontrados:", productos)
+            setProducts(productos)
+          })
+          .catch((error)=>{
+            console.log("Error al cargar productos:", error)
+          })
+          .finally(()=>{
+            setLoader(false)
+          })
 
-      try {
-        const products = await fetchProductsAsync(); 
-        
-        const filteredProducts = products.filter(product => product.category == id); 
-        if (filteredProducts.length > 0) {
-          setProductList(filteredProducts); 
-        } else {
-          setProductList(products)
-        }
-      } catch (err) {
-        setError('Error al cargar productos');
-      } finally {
-        setLoading(false);
-      }
-    };
+    }, [categoryId])
 
-    fetchProducts();
-  }, [id]); 
+    console.log("Estado actual de products:", products)
 
-  const words = "Lo que Buscabas para el Hogar... Esta aca!!!".split(" ");
+    return (
+        <div className="container">
+            <h2 className="text-center">{greetings}</h2>
+            {loader ? (
+                <p>Cargando productos...</p>
+            ) : products.length === 0 ? (
+                <p>No se encontraron productos en esta categoría</p>
+            ) : (
+                <ProductGallery1 products={products} />
+            )}
+        </div>
+    )
+}
 
-  if (error) {
-    return <p>{error}</p>; 
-  }
-
-  return (
-    <div className="bg-gradient-to-r from-green-200 via-green-400 to-purple-700">
-      <motion.h1 
-        className="text-2xl font-heading font-bold tracking-tight text-gray-900 text-center mt-8 mb-12"
-      >
-        {words.map((word, i) => (
-          <motion.span
-            key={i}
-            className="inline-block mr-1"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: i * 0.1,
-              ease: "easeOut"
-            }}
-          >
-            {word}
-          </motion.span>
-        ))}
-      </motion.h1>
-      {loading ? (
-        <p>Cargando productos...</p>
-      ) : productList.length > 0 ? (
-        <ProductGallery products={productList} /> 
-      ) : (
-        <p>No hay productos en esta categoría.</p>
-      )}
-    </div>
-  );
-};
-
-export default ItemListContainer;
+export default ItemListContainer
 

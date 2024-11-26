@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import CartWidget from './components/CartWidget';
 import { CartProvider } from './context/CartContext';
 import Home from './components/home';
-
+import Cart from './components/Cart';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,11 +17,12 @@ function App() {
           <div className="pt-24">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/productos/:id" element={<ItemListContainer />} />
+              <Route path="/categoria/:categoryId" element={<ItemListContainer />} />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
-              <Route path="/cart" element={<CartWidget />} />
+              <Route path="/cart" element={<Cart />} />
             </Routes>
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     </CartProvider>
