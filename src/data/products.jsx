@@ -7,7 +7,7 @@ const products = [
         imageAlt: "Sahumerio purifica la vida en tu Hogar.",
         price: 25,
         color: 'Multi-colores',
-        category: 1
+        category: 'sahumerios'
     },
     {
         id: 4,
@@ -17,7 +17,7 @@ const products = [
         imageAlt: "Sahumerios Tibetanos Frutales.",
         price: 75,
         color: 'Multi-color',
-        category: 1
+        category: 'sahumerios'
     },
     {
         id: 5,
@@ -27,7 +27,7 @@ const products = [
         imageAlt: "Sahumerios Tibetanos Espirituales.",
         price: 75,
         color: 'Multi-color',
-        category: 1
+        category: 'sahumerios'
     },
     {
         id: 6,
@@ -37,7 +37,7 @@ const products = [
         imageAlt: "Sahumerios Tibetanos Magicos.",
         price: 75,
         color: 'Multi-color',
-        category: 1
+        category: 'sahumerios'
     },
     {
         id: 3,
@@ -47,7 +47,7 @@ const products = [
         imageAlt: "12 Velas de Noche.",
         price: 45,
         color: 'White',
-        category: 2
+        category: 'velas'
     },
     {
         id: 7,
@@ -57,7 +57,7 @@ const products = [
         imageAlt: "Velas Iluminarte industria nacional.",
         price: 45,
         color: 'White',
-        category: 2
+        category: 'velas'
     },
     {
         id: 8,
@@ -67,7 +67,7 @@ const products = [
         imageAlt: "Velas Aromaticas Frutales.",
         price: 45,
         color: 'Pink Yellow Brown',
-        category: 2
+        category: 'velas'
     },
     {
         id: 9,
@@ -77,7 +77,7 @@ const products = [
         imageAlt: "Velas Espirituales.",
         price: 45,
         color: 'Multi-Color',
-        category: 2
+        category: 'velas'
     },
     {
         id: 1,
@@ -87,7 +87,7 @@ const products = [
         imageAlt: "Perfume Aromanza.",
         price: 500,
         color: 'Blue',
-        category: 3
+        category: 'perfumes'
     },
     {
         id: 10,
@@ -97,7 +97,7 @@ const products = [
         imageAlt: "Perfume Fragancia Oriental.",
         price: 500,
         color: 'Yellow Pink Red Green',
-        category: 3
+        category: 'perfumes'
     },
     {
         id: 11,
@@ -107,7 +107,7 @@ const products = [
         imageAlt: "Perfume Ambientes ",
         price: 500,
         color: 'Yellow Pink Red Green',
-        category: 3
+        category: 'perfumes'
     },
     {
         id: 12,
@@ -117,7 +117,7 @@ const products = [
         imageAlt: "Perfume Aromanza para Telas.",
         price: 500,
         color: 'violet pink red green',
-        category: 3
+        category: 'perfumes'
     },
     
 ];

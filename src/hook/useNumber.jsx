@@ -1,10 +1,15 @@
-import { useState } from 'react';
-
 export const useNumber = () => {
   const formatNumber = (number) => {
-    if (!number) return '0';
+    if (number === null || number === undefined) return '0';
     
-    return new Intl.NumberFormat('es-ES').format(number);
+    
+    const numValue = Number(number);
+    if (isNaN(numValue)) return '0';
+    
+    return new Intl.NumberFormat('es-ES', {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 0
+    }).format(numValue);
   };
 
   return {

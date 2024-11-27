@@ -2,13 +2,14 @@ import React from 'react';
 import Carrusel from './carrusel'; 
 import ProductGallery1 from './ProductGallery1';
 import products from '../data/products';
+import ItemListContainer from './ItemListContainer';
 
 const Home = () => {
     return (
-        <div className="productos-container">
+        <div className="productos-container bg-gradient-to-r from-green-200 via-green-400 to-purple-700 min-h-screen">
             <h2 className="text-center text-2xl font-bold">Productos Destacados</h2>
             <Carrusel />
-            <ProductGallery1 products={products} />
+            <ItemListContainer  />
         </div>
     );
 };

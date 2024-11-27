@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartWidget from './CartWidget'; 
+import CartWidget from './CartWidget';
+
 
 
 const Navbar = () => {
@@ -10,11 +11,10 @@ const Navbar = () => {
                 <Link className="text-white text-3xl font-bold" to="/">Salem</Link>  
                 
                 <div className="flex space-x-10">
-                    <Link className="text-white hover:underline" to="/categoria/sahumerio">Sahumerio</Link>  
+                    <Link className="text-white hover:underline" to="/categoria/sahumerios">Sahumerio</Link>  
                     <Link className="text-white hover:underline" to="/categoria/velas">Velas Aromáticas</Link>    
                     <Link className="text-white hover:underline" to="/categoria/perfumes">Perfumes Aromáticos</Link> 
                 </div>
-                
                 <CartWidget />
             </div>
         </nav>

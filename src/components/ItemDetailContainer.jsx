@@ -18,8 +18,9 @@ const ItemDetailContainer = () => {
     };
 
     useEffect(() => {
-        const product = products.find(e => e.id == id);
+        const product = products.find(e => e.id === parseInt(id));
         if (!product) {
+            console.log('Producto no encontrado');
             return;
         }
         setProductDetail(product);
