@@ -24,10 +24,10 @@ function App() {
                 <Route path="/categoria/:categoryId" element={<ItemListContainer />} />
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
               </Routes>
             </main>
             <Footer />
-            <Checkout />
           </div>
         </BrowserRouter>
       </CheckoutProvider>

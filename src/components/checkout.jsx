@@ -1,26 +1,99 @@
 import React, { useState } from 'react';
-import { useCheckout } from '../context/CheckoutContext';
 import { useCart } from '../context/CartContext';
 import { useNumber } from '../hook/useNumber';
+import { Link, useNavigate } from 'react-router-dom';
+import CartItems from './CartItems';
+import ContactInfo from './ContactInfo';
+import PaymentInfo from './PaymentInfo';
+import OrderSummary from './OrderSummary';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../service/firebase';
 
 const Checkout = () => {
-    const { isCheckoutOpen, closeCheckout, shippingData, updateShippingData } = useCheckout();
     const { cartItems, getCartTotal, clearCart } = useCart();
     const { formatNumber } = useNumber();
     const [isProcessing, setIsProcessing] = useState(false);
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        address: '',
+        city: '',
+        postalCode: '',
+        phone: '',
+        cardName: '',
+        cardNumber: '',
+        cardExpMonth: '01',
+        cardExpYear: '2024',
+        cardCvc: '',
+        paymentType: 'credit-card',
+        voucher: ''
+    });
 
-    if (!isCheckoutOpen) return null;
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [id]: value
+        }));
+    };
+
+    const validateForm = () => {
+        if (!formData.name || !formData.email || !formData.phone || 
+            !formData.address || !formData.city || !formData.postalCode ||
+            !formData.cardName || !formData.cardNumber || !formData.cardCvc) {
+            alert('Por favor completa todos los campos requeridos');
+            return false;
+        }
+        
+        if (formData.cardNumber.length !== 16) {
+            alert('El número de tarjeta debe tener 16 dígitos');
+            return false;
+        }
+
+        if (formData.cardCvc.length < 3) {
+            alert('El código CVC debe tener al menos 3 dígitos');
+            return false;
+        }
+
+        return true;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsProcessing(true);
+        
+        if (!validateForm()) {
+            return;
+        }
 
+        setIsProcessing(true);
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const order = {
+                buyer: {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    address: formData.address,
+                    city: formData.city,
+                    postalCode: formData.postalCode
+                },
+                items: cartItems.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                })),
+                total: getCartTotal(),
+                createdAt: serverTimestamp()
+            };
+
+            const docRef = await addDoc(collection(db, 'orders'), order);
+            
             clearCart();
-            closeCheckout();
-            alert('¡Compra realizada con éxito!');
+            navigate('/');
+            alert(`¡Compra realizada con éxito! Tu número de orden es: ${docRef.id}`);
         } catch (error) {
+            console.error('Error al procesar el pedido:', error);
             alert('Error al procesar el pago');
         } finally {
             setIsProcessing(false);
@@ -28,37 +101,70 @@ const Checkout = () => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg p-6 max-w-md w-full">
-                <h2 className="text-2xl font-bold mb-4">Finalizar Compra</h2>
-                
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* ... resto del formulario ... */}
-                    <div className="border-t pt-4 mt-4">
-                        <p className="font-bold">Total a pagar: ${formatNumber(getCartTotal())}</p>
+        <div className="min-h-screen bg-gray-100">
+            <div className="container mx-auto px-6 py-8">
+                <div className="flex flex-col lg:flex-row gap-8">
+                    {/* Columna izquierda */}
+                    <div className="lg:w-2/3">
+                        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                            {/* Encabezado */}
+                            <div className="p-6 bg-gray-50 border-b border-gray-200">
+                                <h2 className="text-2xl font-bold text-gray-800">Detalles de compra</h2>
+                            </div>
+                            
+                            {/* Productos */}
+                            <div className="p-6">
+                                <CartItems items={cartItems} />
+                            </div>
+
+                            {/* Información de contacto */}
+                            <div className="p-6 border-t border-gray-200">
+                                <h3 className="text-lg font-semibold mb-4">Información de contacto</h3>
+                                <ContactInfo formData={formData} handleInputChange={handleInputChange} />
+                            </div>
+
+                            {/* Método de pago */}
+                            <div className="p-6 border-t border-gray-200">
+                                <h3 className="text-lg font-semibold mb-4">Método de pago</h3>
+                                <PaymentInfo formData={formData} handleInputChange={handleInputChange} />
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex gap-4">
-                        <button
-                            type="button"
-                            onClick={closeCheckout}
-                            className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 rounded"
-                        >
-                            Cancelar
-                        </button>
-                        <button
-                            type="submit"
-                            disabled={isProcessing}
-                            className={`flex-1 ${
-                                isProcessing 
-                                    ? 'bg-gray-400' 
-                                    : 'bg-green-600 hover:bg-green-700'
-                            } text-white py-2 rounded`}
-                        >
-                            {isProcessing ? 'Procesando...' : 'Pagar'}
-                        </button>
+                    {/* Columna derecha - Resumen */}
+                    <div className="lg:w-1/3">
+                        <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
+                            <h3 className="text-xl font-bold mb-4">Resumen del pedido</h3>
+                            
+                            {/* Código de descuento */}
+                            <div className="mb-6">
+                                <div className="flex space-x-2">
+                                    <input 
+                                        type="text"
+                                        id="voucher"
+                                        value={formData.voucher}
+                                        onChange={handleInputChange}
+                                        placeholder="Código de descuento"
+                                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                    />
+                                    <button className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                                        Aplicar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <OrderSummary cartTotal={getCartTotal()} />
+
+                            <button 
+                                onClick={handleSubmit}
+                                disabled={isProcessing}
+                                className="w-full mt-6 px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {isProcessing ? "Procesando..." : "Confirmar pedido"}
+                            </button>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
