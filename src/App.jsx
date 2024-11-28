@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 
+
 function App() {
   return (
     <CartProvider>

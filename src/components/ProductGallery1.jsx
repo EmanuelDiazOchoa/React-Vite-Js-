@@ -47,34 +47,35 @@ export default function ProductGallery1({products}) {
                   <p className="text-lg font-bold text-purple-800">${product.price}</p>
                 </div>
                 
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
                   <button 
-                    onClick={() => handleAddToCart(product)}
-                    className={`flex-1 py-2 px-4 rounded-md transition-colors duration-200 ${
-                      addedToCart === product.id 
-                        ? 'bg-green-600 hover:bg-green-700' 
-                        : 'bg-purple-600 hover:bg-purple-700'
-                    } text-white text-sm`}
-                  >
-                    {addedToCart === product.id ? '¡Añadido!' : 'Añadir'}
-                  </button>
-
-                  <button 
+                    className="w-8 h-8 rounded-full bg-red-500 text-white hover:bg-red-600 disabled:opacity-50"
                     onClick={() => removeFromCart(product.id)}
-                    className={`flex-1 py-2 px-4 rounded-md bg-red-600 hover:bg-red-700 text-white transition-colors duration-200 text-sm ${
-                      !isProductInCart(product.id) ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
                     disabled={!isProductInCart(product.id)}
                   >
-                    Eliminar
+                    -
                   </button>
-                </div>
 
-                {isProductInCart(product.id) && (
-                  <div className="text-center text-sm text-gray-600">
-                    En carrito: {cartItems.find(item => item.id === product.id)?.quantity || 0}
-                  </div>
-                )}
+                  {isProductInCart(product.id) && (
+                    <span className="text-center text-sm">
+                      {cartItems.find(item => item.id === product.id)?.quantity || 0}
+                    </span>
+                  )}
+
+                  <button 
+                    className="w-8 h-8 rounded-full bg-green-500 text-white hover:bg-green-600"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    +
+                  </button>
+
+                  <Link 
+                    to="/cart"
+                    className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-center"
+                  >
+                    Comprar
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

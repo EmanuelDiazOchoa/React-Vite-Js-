@@ -4,6 +4,7 @@ import { useCheckout } from '../context/CheckoutContext';
 import { useNumber } from '../hook/useNumber';
 import { Link } from 'react-router-dom';
 
+
 const Cart = () => {
     const { cartItems, removeFromCart, clearCart, getCartTotal } = useCart();
     const { openCheckout } = useCheckout();
@@ -24,9 +25,13 @@ const Cart = () => {
         <div className="container mx-auto px-4 py-8">
             <h2 className="text-2xl font-bold mb-4">Tu Carrito</h2>
             {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center justify-between border-b py-4">
+                <div key={item.id} className="flex items-center gap-4 mb-4">
+                    <img 
+                        src={item.img}
+                        alt={item.name}
+                        className="w-24 h-24 object-cover rounded"
+                    />
                     <div className="flex items-center">
-                        <img src={item.imageSrc} alt={item.name} className="w-20 h-20 object-cover mr-4" />
                         <div>
                             <h3 className="font-bold">{item.name}</h3>
                             <p>Cantidad: {item.quantity}</p>
