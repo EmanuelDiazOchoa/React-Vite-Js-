@@ -6,5 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true
+  },
+  build: {
+    rollupOptions: {
+      external: ['@rollup/rollup-linux-x64-gnu']
+    }
   }
 })
