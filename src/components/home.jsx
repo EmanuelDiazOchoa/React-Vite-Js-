@@ -1,5 +1,5 @@
 import React from 'react';
-import Carrusel from './carrusel'; 
+import Carrusel from './Carrusel'; 
 import ItemListContainer from './ItemListContainer';
 
 const Home = () => {
