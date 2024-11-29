@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartProvider } from './context/CartContext';
@@ -17,7 +17,7 @@ function App() {
       <CheckoutProvider>
         <BrowserRouter>
           <div className="flex flex-col min-h-screen">
-            <Navbar />
+            {/* <Navbar /> */}
             <main className="flex-grow pt-[84px]">
               <Routes>
                 {/* <Route path="/" element={<Home />} /> */}
