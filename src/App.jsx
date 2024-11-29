@@ -7,7 +7,7 @@ import { CartProvider } from './context/CartContext';
 import { CheckoutProvider } from './context/CheckoutContext';
 // import Home from './components/Home';
 import Cart from './components/Cart';
-import Footer from './components/Footer.jsx'; 
+// import Footer from './components/Footer.jsx'; 
 import Checkout from './components/checkout';
 
 
@@ -27,7 +27,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
               </Routes>
             </main>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </BrowserRouter>
       </CheckoutProvider>
