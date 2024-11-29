@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
-export default function ProductGallery1({products}) {
+export default function ProductGallery({products}) {
   const { addToCart, removeFromCart, cartItems } = useCart();
   const [addedToCart, setAddedToCart] = useState(null);
 
