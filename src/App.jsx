@@ -8,7 +8,7 @@ import { CheckoutProvider } from './context/CheckoutContext';
 import Home from './components/Homecomponent';
 import Cart from './components/Cart';
 import Footer from './components/Footercomponent'; 
-import Checkout from './components/checkout';
+import Checkout from './components/Checkout';
 
 
 function App() {

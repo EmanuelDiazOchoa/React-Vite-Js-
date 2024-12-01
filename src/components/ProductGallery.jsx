@@ -49,7 +49,7 @@ export default function ProductGallery({products}) {
                 
                 <div className="flex items-center gap-2">
                   <button 
-                    className="w-8 h-8 rounded-full bg-red-500 text-white hover:bg-red-600 disabled:opacity-50"
+                    className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold shadow-md hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
                     onClick={() => removeFromCart(product.id)}
                     disabled={!isProductInCart(product.id)}
                   >
@@ -57,13 +57,13 @@ export default function ProductGallery({products}) {
                   </button>
 
                   {isProductInCart(product.id) && (
-                    <span className="text-center text-sm">
+                    <span className="text-center text-sm font-semibold">
                       {cartItems.find(item => item.id === product.id)?.quantity || 0}
                     </span>
                   )}
 
                   <button 
-                    className="w-8 h-8 rounded-full bg-green-500 text-white hover:bg-green-600"
+                    className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold shadow-md hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                     onClick={() => handleAddToCart(product)}
                   >
                     +
@@ -71,7 +71,7 @@ export default function ProductGallery({products}) {
 
                   <Link 
                     to="/cart"
-                    className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-center"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-md shadow-md hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
                   >
                     Comprar
                   </Link>
