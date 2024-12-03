@@ -91,7 +91,7 @@ const Checkout = () => {
             const docRef = await addDoc(collection(db, 'orders'), order);
             
             clearCart();
-            navigate('/payment-confirmation');
+            navigate('/payment-confirmation', { state: { orderNumber: docRef.id } });
         } catch (error) {
             console.error('Error al procesar el pedido:', error);
             alert('Error al procesar el pago');
