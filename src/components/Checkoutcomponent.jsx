@@ -8,6 +8,7 @@ import PaymentInfo from './PaymentInfo';
 import OrderSummary from './OrderSummary';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../service/firebase';
+import PaymentConfirmation from './PaymentConfirmation';
 
 const Checkout = () => {
     const { cartItems, getCartTotal, clearCart } = useCart();
@@ -90,8 +91,7 @@ const Checkout = () => {
             const docRef = await addDoc(collection(db, 'orders'), order);
             
             clearCart();
-            navigate('/');
-            alert(`¡Compra realizada con éxito! Tu número de orden es: ${docRef.id}`);
+            navigate('/payment-confirmation');
         } catch (error) {
             console.error('Error al procesar el pedido:', error);
             alert('Error al procesar el pago');
@@ -104,26 +104,21 @@ const Checkout = () => {
         <div className="min-h-screen bg-gray-100">
             <div className="container mx-auto px-6 py-8">
                 <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Columna izquierda */}
                     <div className="lg:w-2/3">
                         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                            {/* Encabezado */}
                             <div className="p-6 bg-gray-50 border-b border-gray-200">
                                 <h2 className="text-2xl font-bold text-gray-800">Detalles de compra</h2>
                             </div>
                             
-                            {/* Productos */}
                             <div className="p-6">
                                 <CartItems items={cartItems} />
                             </div>
 
-                            {/* Información de contacto */}
                             <div className="p-6 border-t border-gray-200">
                                 <h3 className="text-lg font-semibold mb-4">Información de contacto</h3>
                                 <ContactInfo formData={formData} handleInputChange={handleInputChange} />
                             </div>
 
-                            {/* Método de pago */}
                             <div className="p-6 border-t border-gray-200">
                                 <h3 className="text-lg font-semibold mb-4">Método de pago</h3>
                                 <PaymentInfo formData={formData} handleInputChange={handleInputChange} />
@@ -131,12 +126,10 @@ const Checkout = () => {
                         </div>
                     </div>
 
-                    {/* Columna derecha - Resumen */}
                     <div className="lg:w-1/3">
                         <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
                             <h3 className="text-xl font-bold mb-4">Resumen del pedido</h3>
                             
-                            {/* Código de descuento */}
                             <div className="mb-6">
                                 <div className="flex space-x-2">
                                     <input 

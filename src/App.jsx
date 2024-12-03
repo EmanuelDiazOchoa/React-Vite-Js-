@@ -9,6 +9,7 @@ import Home from './components/Homecomponent';
 import Cart from './components/Cart';
 import Footer from './components/Footercomponent'; 
 import Checkout from './components/Checkoutcomponent';
+import PaymentConfirmation from './components/PaymentConfirmation';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/payment-confirmation" element={<PaymentConfirmation />} />
               </Routes>
             </main>
             <Footer />
