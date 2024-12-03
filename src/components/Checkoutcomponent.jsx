@@ -8,7 +8,7 @@ import PaymentInfo from './PaymentInfo';
 import OrderSummary from './OrderSummary';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../service/firebase';
-import PaymentConfirmation from './PaymentConfirmation';
+import PaymentConfirmation from './Paymentconfirmationcomponents';
 
 const Checkout = () => {
     const { cartItems, getCartTotal, clearCart } = useCart();

@@ -9,7 +9,7 @@ import Home from './components/Homecomponent';
 import Cart from './components/Cart';
 import Footer from './components/Footercomponent'; 
 import Checkout from './components/Checkoutcomponent';
-import PaymentConfirmation from './components/PaymentConfirmation';
+import PaymentConfirmation from './components/Paymentconfirmationcomponents';
 
 
 function App() {
